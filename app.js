@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
     startGame();
   });
 
-  var toggleClasses = (element) => {
+  function toggleClasses(element) {
     for (let i = 1; i < arguments.length; i++) {
       element.classList.toggle(arguments[i]);
     }
   }
 
-  var startGame = () => {
+  function startGame() {
     // get random words and append them to the DOM
     var wordList = document.getElementById("word-list");
     var randomWords = getRandomValues(words, wordCount);
@@ -34,9 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     wordList.addEventListener('click', updateGame);
   }
 
-  var getRandomValues = (array, numberOfVals) => {
-    return shuffle(array).slice(0, numberOfVals);
-  }
+  var getRandomValues = (array, numberOfVals) => shuffle(array).slice(0, numberOfVals);
 
   var shuffle = (array) => {
     var arrayCopy = array.slice();
