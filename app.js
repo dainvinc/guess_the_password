@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
     startGame();
   });
 
-  function toggleClasses(element) {
+  var toggleClasses = (element) => {
     for (var i = 1; i < arguments.length; i++) {
       element.classList.toggle(arguments[i]);
     }
   }
 
-  function startGame() {
+  var startGame = () => {
     // get random words and append them to the DOM
     var wordList = document.getElementById("word-list");
     var randomWords = getRandomValues(words, wordCount);
@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     wordList.addEventListener('click', updateGame);
   }
 
-  function getRandomValues(array, numberOfVals) {
+  var getRandomValues = (array, numberOfVals) => {
     return shuffle(array).slice(0, numberOfVals);
   }
 
-  function shuffle(array) {
+  var shuffle = (array) => {
     var arrayCopy = array.slice();
     for (var idx1 = arrayCopy.length - 1; idx1 > 0; idx1--) {
       // generate a random index between 0 and idx1 (inclusive)
@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return arrayCopy;
   }
 
-  function setGuessCount(newCount) {
+  var setGuessCount = (newCount) => {
     guessCount = newCount;
     document.getElementById("guesses-remaining").innerText = "Guesses remaining: " + guessCount + ".";
   }
 
-  function updateGame(e) {
+  var updateGame = (e) => {
     if (e.target.tagName === "LI" && !e.target.classList.contains("disabled")) {
       // grab guessed word, check it against password, update view
       var guess = e.target.innerText;
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  function compareWords(word1, word2) {
+  var compareWords = (word1, word2) => {
     if (word1.length !== word2.length) throw "Words must have the same length";
     var count = 0;
     for (var i = 0; i < word1.length; i++) {
